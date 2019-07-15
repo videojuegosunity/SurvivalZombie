@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Basic Player Script//
-//controls: 
+//controls:
 //A, D, Left, Right to move
 //Left Alt to attack
 //Space to jump
@@ -67,7 +67,7 @@ public class Demo : MonoBehaviour {
 	//attacking and jumping//
 	private void HandleInput()
 	{
-		if (Input.GetKeyDown (KeyCode.LeftAlt) && !dead) 
+		if (Input.GetKeyDown (KeyCode.LeftAlt) && !dead)
 		{
 			attack = true;
 			anim.SetBool ("Attack", true);
@@ -87,7 +87,7 @@ public class Demo : MonoBehaviour {
 		}
 
 		//dead animation for testing//
-		if (Input.GetKeyDown (KeyCode.Z)) 
+		if (Input.GetKeyDown (KeyCode.Z))
 		{
 			if (!dead) {
 				anim.SetBool ("Dead", true);
@@ -99,7 +99,7 @@ public class Demo : MonoBehaviour {
 				}
 		}
 	}
-		
+
 	private void Flip (float horizontal)
 	{
 			facingRight = !facingRight;
