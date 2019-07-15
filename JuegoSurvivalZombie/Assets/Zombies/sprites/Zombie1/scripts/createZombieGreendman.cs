@@ -18,7 +18,7 @@ public GameObject prefab_zombie_greendman;
     void Update()
     {
         count++;
-        if( count==150 )
+        if( count==75 )
         {
             Vector3 position = new Vector3(-10.0f, prefab_zombie_greendman.transform.position.y, prefab_zombie_greendman.transform.position.z);
             Instantiate(prefab_zombie_greendman, position, Quaternion.identity);

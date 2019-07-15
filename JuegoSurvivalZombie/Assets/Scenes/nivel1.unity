@@ -561,7 +561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583365098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8785422, y: -5.07, z: 0}
+  m_LocalPosition: {x: -0.8785422, y: -5.07, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1344707372}
@@ -680,7 +680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &760699652
 Transform:
   m_ObjectHideFlags: 0
@@ -822,7 +822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1107427744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1139,7 +1139,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2eff6edd9ce148b4f85b0cef3ec7f1ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 948386d41c05064c498d36754e734974, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1159,7 +1159,7 @@ Transform:
   m_GameObject: {fileID: 1473792391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.9196483, y: -6.086623, z: 0}
-  m_LocalScale: {x: 1.8004307, y: 0.93499726, z: 1}
+  m_LocalScale: {x: 1.8004307, y: 1.3089962, z: 1}
   m_Children: []
   m_Father: {fileID: 1344707372}
   m_RootOrder: 4
@@ -1329,6 +1329,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie1_greendman
       objectReference: {fileID: 0}
+    - target: {fileID: 2238947637146201970, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2238947637146201968, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1342,7 +1347,7 @@ PrefabInstance:
     - target: {fileID: 2238947637146201968, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 2238947637146201968, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
         type: 3}
@@ -1388,6 +1393,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238947637146201982, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.11292195
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238947637146201982, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.2954588
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238947637146201982, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.069977105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238947637146201982, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.8791394
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238947637146201983, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238947637146201983, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238947637146201983, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238947637146201981, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b23ca9bebe1b81e1a60c8222d43cd2b, type: 3}

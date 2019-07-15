@@ -16,7 +16,7 @@ public class greendman : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Transform>().position = new Vector3(18.0f, 0.0f, 0.0f);
+        gameObject.GetComponent<Transform>().position = new Vector3(16.0f, 0.0f, -0.01f);
         toRight = true;
     }
 
@@ -34,8 +34,13 @@ public class greendman : MonoBehaviour
             next = true;
         }
 
-        if (to_right && gameObject.transform.position.x < 11.00f || next && gameObject.transform.position.x > -11.00f){
-                gameObject.transform.localScale = new Vector3(mult*1.5F, 1.5F, 0.0f);
+        if ((to_right && gameObject.transform.position.x < 11.00f )|| (next && gameObject.transform.position.x > -11.00f)){
+                gameObject.transform.localScale = new Vector3(mult*1.25F, 1.25F, 0.0f);
+                if ( to_right){
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -0.001f);
+                }else{
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -0.005f);
+                }
                 gameObject.transform.Translate(mult*speed*Time.deltaTime, 0, 0);
         }
         else{
