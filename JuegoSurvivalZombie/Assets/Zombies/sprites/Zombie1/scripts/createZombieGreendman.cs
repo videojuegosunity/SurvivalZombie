@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class createZombieGreendman : MonoBehaviour
-{
-public GameObject prefab_zombie_greendman;
+public class createZombieGreendman : MonoBehaviour{
+    public GameObject prefab_zombie_greendman;
 
     int count = 0;
+    int zombieI = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -15,14 +15,13 @@ public GameObject prefab_zombie_greendman;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
         count++;
-        if( count==75 )
-        {
-            Vector3 position = new Vector3(-10.0f, prefab_zombie_greendman.transform.position.y, prefab_zombie_greendman.transform.position.z);
+        if( count == 120 ){
+            Vector3 position = new Vector3(10.0f + zombieI*5 ,prefab_zombie_greendman.transform.position.y, prefab_zombie_greendman.transform.position.z);
             Instantiate(prefab_zombie_greendman, position, Quaternion.identity);
             count = 0;
+            zombieI++;
         }
     }
 }

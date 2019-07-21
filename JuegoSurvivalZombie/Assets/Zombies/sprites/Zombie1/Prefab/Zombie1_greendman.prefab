@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 2238947637146201981}
   - component: {fileID: 2238947637146201980}
   - component: {fileID: 2238947637146201979}
+  - component: {fileID: 2096738412284429089}
   m_Layer: 0
   m_Name: Zombie1_greendman
-  m_TagString: Untagged
+  m_TagString: zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2238947637146201970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.77, y: 0.5, z: 0}
-  m_LocalScale: {x: 1.55, y: 1.9835156, z: 1}
+  m_LocalPosition: {x: -10.727, y: 0.159, z: 0}
+  m_LocalScale: {x: 1.51125, y: 1.8010322, z: 1}
   m_Children:
   - {fileID: 2238947637183131424}
   m_Father: {fileID: 0}
@@ -131,7 +132,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &2238947637146201981
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ Animator:
   m_GameObject: {fileID: 2238947637146201970}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4403733b14a13ff58b74ece7798dfe02, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2f7d6a5a57b1e751d973da8dcdf00023, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -179,6 +180,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &2096738412284429089
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238947637146201970}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.591502
 --- !u!1 &2238947637183131425
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,65 +2,60 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class greendman : MonoBehaviour
-{
+public class greendman : MonoBehaviour{
     private float speed = 2.5f;
     private Transform obj_trasform;
-    bool toRight;
+    bool choque = false;
+    Rigidbody2D rb;
+    float limiteDer;
+    float limiteIzq;
+    float direccion = -1;
 
-    private void Awake()
-    {
+    private void Awake(){ 
         obj_trasform = this.transform;
         gameObject.transform.localScale = new Vector3(1.5F, 1.5F, 0.0f);
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        gameObject.GetComponent<Transform>().position = new Vector3(16.0f, 0.0f, -0.01f);
-        toRight = true;
-    }
-
+    void Start(){
+        rb = GetComponent<Rigidbody2D>();
+        var posicionInicial = gameObject.GetComponent<Transform>().position;
+        limiteDer = posicionInicial.x + 3f;
+        limiteIzq = posicionInicial.x - 3f;
+}
     // Update is called once per frame
-    void Update()
-    {
-        move(toRight);
-    }
-
-    private void move(bool to_right){
-        int mult = 1;
-        bool next = false;
-        if (to_right == false){
-            mult = -1;
-            next = true;
+    void Update(){
+        transform.localScale = new Vector3(1 * direccion,1,1);
+        rb.velocity = new Vector2(speed*direccion, rb.velocity.y);
+        if(transform.position.x < limiteIzq && !choque){
+            direccion = 1;      
         }
-
-        if ((to_right && gameObject.transform.position.x < 11.00f )|| (next && gameObject.transform.position.x > -11.00f)){
-                gameObject.transform.localScale = new Vector3(mult*1.25F, 1.25F, 0.0f);
-                if ( to_right){
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -0.001f);
-                }else{
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -0.005f);
-                }
-                gameObject.transform.Translate(mult*speed*Time.deltaTime, 0, 0);
-        }
-        else{
-            linearStop();
-            this.toRight = next;
+        if(transform.position.x > limiteDer && !choque){ 
+            direccion = -1;       
         }
     }
 
-    private void linearStop()
-    {
-        var v = gameObject.GetComponent<Rigidbody2D>().velocity;
-        v =  Vector3.zero;
-        gameObject.GetComponent<Rigidbody2D>().velocity = v;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "Player")
+    private void OnCollisionEnter2D(Collision2D collision){
+        Debug.Log("impactado");
+        if (collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "zombie")
+        {
+            choque = true;
+            direccion = direccion * -1 ;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision){
+        Debug.Log("impactado salida");
+        if (collision.gameObject.tag == "Player")
+        {
+            //Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "zombie")
+        {
+            choque = false;
         }
     }
 
