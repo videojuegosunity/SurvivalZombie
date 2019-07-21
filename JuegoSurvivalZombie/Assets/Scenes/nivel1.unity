@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 809764873}
   - component: {fileID: 809764872}
   m_Layer: 0
-  m_Name: Sneak_Peak_3_1
+  m_Name: SneakPeak31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1203,7 +1203,7 @@ GameObject:
   - component: {fileID: 1004307478}
   - component: {fileID: 1004307477}
   m_Layer: 0
-  m_Name: Sneak_Peak_3_1 (1)
+  m_Name: SneakPeak31(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1535,7 +1535,7 @@ GameObject:
   - component: {fileID: 1360279029}
   - component: {fileID: 1360279028}
   m_Layer: 0
-  m_Name: Sneak_Peak_3_1 (2)
+  m_Name: SneakPeak31(2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
