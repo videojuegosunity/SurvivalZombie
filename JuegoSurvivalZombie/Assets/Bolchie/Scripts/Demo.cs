@@ -29,7 +29,11 @@ public class Demo : MonoBehaviour {
 
 	bool dead = false;
 	bool attack = false;
-
+	public Transform obj_trans;
+    private void Awake()
+    {
+        obj_trans = this.transform;
+    }
 	void Start () {
 		GetComponent<Rigidbody2D> ().freezeRotation = true;
 		rb = GetComponent<Rigidbody2D> ();
