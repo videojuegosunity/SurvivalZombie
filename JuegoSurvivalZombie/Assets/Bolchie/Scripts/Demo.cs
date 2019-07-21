@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 //Basic Player Script//
 //controls:
 //A, D, Left, Right to move
@@ -13,6 +13,12 @@ public class Demo : MonoBehaviour {
 
 	//variable for how fast player runs//
 	private float speed = 5f;
+    public int vidas = 3;
+    public Text puntajeText;
+    public Text vidaText;
+    public Text infoText;
+    public int puntaje = 0;
+    public Image mascaraDano;
 
 	private bool facingRight = true;
 	private Animator anim;
@@ -41,14 +47,14 @@ public class Demo : MonoBehaviour {
 
 	}
 
-	void Update()
-	{
+	void Update(){
+        float valfa = 0.25f * (3 - vidas);
+        mascaraDano.color =  new Color(255,0,0,valfa );
 		HandleInput ();
 	}
 
 	//movement//
-	void FixedUpdate ()
-	{
+	void FixedUpdate (){
 		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 		anim.SetBool ("Ground", grounded);
 
@@ -69,8 +75,7 @@ public class Demo : MonoBehaviour {
 	}
 
 	//attacking and jumping//
-	private void HandleInput()
-	{
+	private void HandleInput(){
 		if (Input.GetKeyDown (KeyCode.LeftAlt) && !dead)
 		{
 			attack = true;
@@ -111,4 +116,33 @@ public class Demo : MonoBehaviour {
 			theScale.x *= -1;
 			transform.localScale = theScale;
 	}
+
+    void SetCountText (){
+        puntajeText.text = puntaje.ToString();
+        vidaText.text = vidas.ToString();
+
+        if (puntaje >= 10){
+            infoText.text = "Ganaste!";
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col){       
+        if(col.gameObject.tag == "zombie"){
+            infoText.text = "Perdiste una vida!!!!!";
+            vidas--;
+            Destroy(col.gameObject);
+            if(vidas<=0){
+                anim.SetBool ("Dead", true);
+				anim.SetFloat ("Speed", 0);
+				dead = true;
+                infoText.text = "Perdiste!!!!!";
+                //Destroy(gameObject);
+            }
+            SetCountText();
+        }
+    }
+
+
+
+
 }
