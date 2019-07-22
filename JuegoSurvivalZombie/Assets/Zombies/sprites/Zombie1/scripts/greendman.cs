@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class greendman : MonoBehaviour{
-    AudioSource fuenteAudio;
-    public AudioClip zombiesound;
     private float speed = 2.5f;
     private Transform obj_trasform;
     bool choque = false;
@@ -22,8 +20,6 @@ public class greendman : MonoBehaviour{
     }
     // Start is called before the first frame update
     void Start(){
-        fuenteAudio = GetComponent<AudioSource>();
-        fuenteAudio.Play();
         rb = GetComponent<Rigidbody2D>();
         var posicionInicial = gameObject.GetComponent<Transform>().position;
         limiteDer = posicionInicial.x + 3f;
