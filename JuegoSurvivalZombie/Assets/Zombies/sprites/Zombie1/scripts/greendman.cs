@@ -42,7 +42,6 @@ public class greendman : MonoBehaviour{
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
-        Debug.Log("impactado");
         if (collision.gameObject.tag == "Player")
         {
             //Destroy(gameObject);
@@ -55,7 +54,6 @@ public class greendman : MonoBehaviour{
     }
 
     private void OnCollisionExit2D(Collision2D collision){
-        Debug.Log("impactado salida");
         if (collision.gameObject.tag == "Player")
         {
             //Destroy(gameObject);
