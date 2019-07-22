@@ -39,6 +39,10 @@ public class greendman : MonoBehaviour{
         if (destroy == true){
             Destroy(gameObject);
         }
+        var position = transform.position;
+        if(position.y < -15f){
+             Destroy(gameObject);
+        } 
     }
 
     private void OnCollisionEnter2D(Collision2D collision){

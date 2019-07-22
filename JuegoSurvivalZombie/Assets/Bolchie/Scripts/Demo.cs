@@ -22,8 +22,7 @@ public class Demo : MonoBehaviour {
     public int puntaje = 0;
     public enum Modo {ataque, normal};
     public Modo modo;
-
-
+    public GameObject[] herramientas;
 
 	private float speed = 5f;
 	private bool facingRight = true;
@@ -141,7 +140,7 @@ public class Demo : MonoBehaviour {
                 case Modo.normal:
                     infoText.text = "Perdiste una vida!!!!!";
                     vidas--;
-                    rb.velocity = new Vector2 (horizontal * (speed--), rb.velocity.y);
+                    rb.velocity = new Vector2 (rb.velocity.y - 1, rb.velocity.y);
                     //Destroy(col.gameObject);
                     if(vidas<=0){
                         anim.SetBool ("Dead", true);
