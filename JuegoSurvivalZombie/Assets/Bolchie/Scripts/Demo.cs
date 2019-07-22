@@ -153,7 +153,9 @@ public class Demo : MonoBehaviour {
                 case Modo.ataque:
                     Debug.Log("impactado");
                     infoText.text = "mataste un zombie!!!!!";
-                    Destroy(col.gameObject);
+                    //Destroy(col.gameObject);
+                    greendman scriptToAccess = col.gameObject.GetComponent<greendman>();
+                    scriptToAccess.CheckDestroy(true);
                     puntaje += 2; 
                     break;
             }  

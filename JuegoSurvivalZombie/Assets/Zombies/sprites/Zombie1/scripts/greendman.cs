@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class greendman : MonoBehaviour{
+    AudioSource fuenteAudio;
+    public AudioClip zombiesound;
     private float speed = 2.5f;
     private Transform obj_trasform;
     bool choque = false;
     Rigidbody2D rb;
     float limiteDer;
+    public Animator anim;
     float limiteIzq;
     float direccion = -1;
     bool destroy = false;
@@ -15,9 +18,12 @@ public class greendman : MonoBehaviour{
     private void Awake(){
         obj_trasform = this.transform;
         gameObject.transform.localScale = new Vector3(1.5F, 1.5F, 0.0f);
+        anim = GetComponent<Animator> ();
     }
     // Start is called before the first frame update
     void Start(){
+        fuenteAudio = GetComponent<AudioSource>();
+        fuenteAudio.Play();
         rb = GetComponent<Rigidbody2D>();
         var posicionInicial = gameObject.GetComponent<Transform>().position;
         limiteDer = posicionInicial.x + 3f;
@@ -35,9 +41,11 @@ public class greendman : MonoBehaviour{
             direccion = -1;
         }
     }
-    private void CheckDestroy(bool destroy){
-        if (destroy == true){
-            Destroy(gameObject);
+    public void CheckDestroy(bool destroy){
+        
+		if (destroy == true){
+           Destroy(gameObject);
+            //anim.SetBool ("dead", true);
         }
         var position = transform.position;
         if(position.y < -15f){
