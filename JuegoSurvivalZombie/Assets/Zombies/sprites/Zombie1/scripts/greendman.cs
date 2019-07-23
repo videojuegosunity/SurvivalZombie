@@ -15,13 +15,14 @@ public class greendman : MonoBehaviour{
 
     private void Awake(){
         obj_trasform = this.transform;
-        gameObject.transform.localScale = new Vector3(1.5F, 1.5F, 0.0f);
+        gameObject.transform.localScale = new Vector3(1.0F, 1.0F, 1f);
         anim = GetComponent<Animator> ();
     }
     // Start is called before the first frame update
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         var posicionInicial = gameObject.GetComponent<Transform>().position;
+        //rb.position = posicionInicial;
         limiteDer = posicionInicial.x + 3f;
         limiteIzq = posicionInicial.x - 3f;
 }
@@ -29,7 +30,7 @@ public class greendman : MonoBehaviour{
     void Update(){
         CheckDestroy(destroy);
         transform.localScale = new Vector3(1 * direccion,1,1);
-        rb.velocity = new Vector2(speed*direccion, rb.velocity.y);
+        rb.velocity = new Vector2(speed*direccion, 0.0f);
         if(transform.position.x < limiteIzq && !choque){
             direccion = 1;
         }
