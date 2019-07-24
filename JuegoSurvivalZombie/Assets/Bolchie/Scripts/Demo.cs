@@ -23,6 +23,8 @@ public class Demo : MonoBehaviour {
     public enum Modo {ataque, normal};
     public Modo modo;
     public GameObject[] herramientas;
+    public GameObject[] cantidad;
+    public int index_herramientas;
 
 	private float speed = 5f;
 	private bool facingRight = true;
@@ -34,7 +36,7 @@ public class Demo : MonoBehaviour {
 
 	//variable for how high player jumps//
 	[SerializeField]
-	private float jumpForce = 300f;
+	private float jumpForce = 1f;
 
 	public Rigidbody2D rb { get; set; }
 
@@ -97,8 +99,7 @@ public class Demo : MonoBehaviour {
 			anim.SetBool ("Attack", false);
 			}
 
-		if (grounded && Input.GetKeyDown(KeyCode.Space) && !dead)
-		{
+		if (grounded && Input.GetKeyDown(KeyCode.Space) && !dead){
 			anim.SetBool ("Ground", false);
 			rb.AddForce (new Vector2 (0,jumpForce));
 		}
@@ -159,7 +160,13 @@ public class Demo : MonoBehaviour {
                     puntaje += 2; 
                     break;
             }  
-            
         }
+        if(col.gameObject.tag == "bomba" && !dead){
+        	Destroy(col.gameObject);
+        }
+    }
+
+    public bool ataque(){
+    	return Modo.ataque == modo; 
     }
 }
