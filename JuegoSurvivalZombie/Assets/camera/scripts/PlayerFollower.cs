@@ -7,6 +7,7 @@ public class PlayerFollower : MonoBehaviour
     public Transform obj_trans;
     public Demo main_player;
     public float camera_offset_pos_y;
+    public float camera_offset_pos_z;
 
     private void Awake()
     {
@@ -27,5 +28,6 @@ public class PlayerFollower : MonoBehaviour
             camera_new_pos.y = main_player.obj_trans.position.y + camera_offset_pos_y;
             obj_trans.position = camera_new_pos;
         }
+
     }
 }
