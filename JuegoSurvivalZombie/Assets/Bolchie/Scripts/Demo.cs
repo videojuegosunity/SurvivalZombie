@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//Basic Player Script//
-//controls:
-//A, D, Left, Right to move
-//Left Alt to attack
-//Space to jump
-//Z is to see dead animation
 
 public class Demo : MonoBehaviour {
     // GUI
     public Text puntajeText;
     public Text vidaText;
     public Text infoText;
+   	public Text cantidadText;
     public Image mascaraDano;
+    public Image barraEnergia;
+    public Image herramienta;
     public Animator anim;
 
     // informacion de jugador
     public int vidas = 3;
+    public int energiaTotal = 100;
+    public int energiaActual = 100;
     public int puntaje = 0;
+    bool dead = false;
     public enum Modo {ataque, normal};
     public Modo modo;
-    public GameObject[] herramientas;
-    public GameObject[] cantidad;
+    List<GameObject> herramientas = new List<GameObject>();
+    List<int> cantidad = new List<int>();
     public int index_herramientas;
 
 	private float speed = 5f;
@@ -39,18 +39,15 @@ public class Demo : MonoBehaviour {
 	private float jumpForce = 1f;
 
 	public Rigidbody2D rb { get; set; }
-
-	bool dead = false;
-	//bool attack = false;
 	public Transform obj_trans;
 
     private void Awake(){
-        obj_trans = this.transform;
+    	obj_trans = this.transform;
         modo = Modo.normal;
     }
 
 	void Start () {
-		GetComponent<Rigidbody2D> ().freezeRotation = true;
+		GetComponent<Rigidbody2D>().freezeRotation = true;
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
 	}
@@ -71,90 +68,74 @@ public class Demo : MonoBehaviour {
 			anim.SetFloat ("vSpeed", rb.velocity.y);
 			anim.SetFloat ("Speed", Mathf.Abs (horizontal));
 			rb.velocity = new Vector2 (horizontal * speed, rb.velocity.y);
-         
 		}
 		if (horizontal > 0 && !facingRight && !dead && modo != Modo.ataque) {
 			Flip (horizontal);
-		}
-
-		else if (horizontal < 0 && facingRight && !dead && modo != Modo.ataque){
+		}else if (horizontal < 0 && facingRight && !dead && modo != Modo.ataque){
 			Flip (horizontal);
 		}
+		barraEnergia.fillAmount = (float)energiaActual / energiaTotal;
 	}
 
-	//attacking and jumping//
 	private void HandleInput(){
-		if (Input.GetKeyDown (KeyCode.C) && !dead)
-		{
-			//attack = true;
+		if (Input.GetKeyDown (KeyCode.C) && !dead){
             modo = Modo.ataque;
 			anim.SetBool ("Attack", true);
 			anim.SetFloat ("Speed", 0);
-
 		}
-		if (Input.GetKeyUp(KeyCode.C))
-			{
-			//attack = false;
+		if (Input.GetKeyUp(KeyCode.C)){
             modo = Modo.normal;
 			anim.SetBool ("Attack", false);
-			}
-
+		}
 		if (grounded && Input.GetKeyDown(KeyCode.Space) && !dead){
 			anim.SetBool ("Ground", false);
 			rb.AddForce (new Vector2 (0,jumpForce));
 		}
-
-		//dead animation for testing//
-		if (Input.GetKeyDown (KeyCode.Z))
-		{
-			if (!dead) {
-				anim.SetBool ("Dead", true);
-				anim.SetFloat ("Speed", 0);
-				dead = true;
-			} else {
-					anim.SetBool ("Dead", false);
-					dead = false;
-				}
-		}
 	}
 
-	private void Flip (float horizontal)
-	{
-			facingRight = !facingRight;
-			Vector3 theScale = transform.localScale;
-			theScale.x *= -1;
-			transform.localScale = theScale;
+	private void Flip (float horizontal){
+		facingRight = !facingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 
     void SetCountText (){
         puntajeText.text = puntaje.ToString();
         vidaText.text = vidas.ToString();
-
-        if (puntaje >= 10){
+        if (puntaje >= 20){
             infoText.text = "Ganaste!";
         }
     }
 
     void OnCollisionEnter2D(Collision2D col){       
-        if(col.gameObject.tag == "zombie" && !dead){
+        collision(col);
+    }
+
+    public bool ataque(){
+    	return Modo.ataque == modo; 
+    }
+
+    private void collision(Collision2D col){
+    	if(col.gameObject.tag == "zombie" && !dead){
             switch (modo){
                 case Modo.normal:
-                    infoText.text = "Perdiste una vida!!!!!";
-                    vidas--;
+                    energiaActual = energiaActual - 5;
+                    if(energiaActual <= 0){
+                    	infoText.text = "Perdiste una vida!!!!!";
+                    	vidas--;
+                    	energiaActual = energiaTotal;
+                    }
                     rb.velocity = new Vector2 (rb.velocity.y - 1, rb.velocity.y);
-                    //Destroy(col.gameObject);
                     if(vidas<=0){
                         anim.SetBool ("Dead", true);
 				        anim.SetFloat ("Speed", 0);
 				        dead = true;
                         infoText.text = "Perdiste!!!!!";
-                        //Destroy(gameObject);
                     } 
                     break;
                 case Modo.ataque:
-                    Debug.Log("impactado");
                     infoText.text = "mataste un zombie!!!!!";
-                    //Destroy(col.gameObject);
                     greendman scriptToAccess = col.gameObject.GetComponent<greendman>();
                     scriptToAccess.CheckDestroy(true);
                     puntaje += 2; 
@@ -162,11 +143,11 @@ public class Demo : MonoBehaviour {
             }  
         }
         if(col.gameObject.tag == "bomba" && !dead){
+        	//herramienta.sprite = (Sprite)Resources.Load <Sprite>("Free Game Items/300dpi/bomb");
+        	herramientas.Add(col.gameObject);
+        	cantidad.Add(5);
+        	cantidadText.text = "5";
         	Destroy(col.gameObject);
         }
-    }
-
-    public bool ataque(){
-    	return Modo.ataque == modo; 
     }
 }

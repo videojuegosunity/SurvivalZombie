@@ -14,7 +14,7 @@ public class greendman : MonoBehaviour{
     float limiteIzq;
     float direccion = -1;
     bool destroy = false;
-    float countDead = 120;
+    float countDead = 60;
     
     private void Awake(){
         obj_trasform = this.transform;
