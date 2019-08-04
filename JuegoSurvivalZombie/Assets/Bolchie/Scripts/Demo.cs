@@ -27,6 +27,7 @@ public class Demo : MonoBehaviour {
     public int index_herramientas;
 
 	private float speed = 5f;
+	public GameObject bomba;
 	private bool facingRight = true;
 	
 	bool grounded = false;
@@ -91,6 +92,14 @@ public class Demo : MonoBehaviour {
 			anim.SetBool ("Ground", false);
 			rb.AddForce (new Vector2 (0,jumpForce));
 		}
+
+		if(Input.GetKeyUp(KeyCode.V) && cantidad[0] > 0){
+            var position = rb.position;
+            GameObject obj = (GameObject) Instantiate(bomba, new Vector3(position.x + 2.5f, position.y, -5), Quaternion.identity);
+            obj.GetComponent<Rigidbody2D>().velocity = new Vector3(3, 0, 0);
+            cantidad[0] --;
+            cantidadText.text = cantidad[0].ToString();
+        }
 	}
 
 	private void Flip (float horizontal){

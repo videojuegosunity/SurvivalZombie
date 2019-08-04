@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2984307812172172722}
   - component: {fileID: 771560072941113312}
   - component: {fileID: 5390883772302102237}
+  - component: {fileID: 1966963134192202750}
   m_Layer: 0
   m_Name: bomb
   m_TagString: bomba
@@ -112,9 +113,21 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.013378828, y: 0}
   serializedVersion: 2
   m_Radius: 0.37305477
+--- !u!114 &1966963134192202750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2984307812172172723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5df7dd166a4628485b9242a662c862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

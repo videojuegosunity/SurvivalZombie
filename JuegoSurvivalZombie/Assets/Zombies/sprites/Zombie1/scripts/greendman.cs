@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class greendman : MonoBehaviour{
+    //referencias
+    private Transform obj_trasform;
+    Rigidbody2D rb;
+    public Animator anim;
+    public GameObject particulas;
+
     public enum Modo {dead, normal};
     public Modo modo;
     private float speed = 2.5f;
-    private Transform obj_trasform;
     bool choque = false;
-    Rigidbody2D rb;
     float limiteDer;
-    public Animator anim;
     float limiteIzq;
     float direccion = -1;
     bool destroy = false;
     float countDead = 60;
+    
     
     private void Awake(){
         obj_trasform = this.transform;
@@ -63,10 +67,7 @@ public class greendman : MonoBehaviour{
     private void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.tag == "Player" && modo != Modo.dead){
             if (collision.gameObject.GetComponent<Demo>().ataque()){
-                anim.SetBool("attack", false);
-                anim.SetBool("dead", true);
-                rb.constraints = RigidbodyConstraints2D.None;
-                modo = Modo.dead;
+                morir();  
             }else{
                 anim.SetBool("attack", true);
             }
@@ -74,6 +75,12 @@ public class greendman : MonoBehaviour{
         if (collision.gameObject.tag == "zombie" && modo != Modo.dead){
             choque = true;
             direccion = direccion * -1 ;
+        }
+        if (collision.gameObject.tag == "bomba" && modo != Modo.dead){
+            var position = transform.position;
+            Instantiate(particulas, new Vector3(position.x, position.y, -10), Quaternion.identity);
+            morir();
+            Destroy(collision.gameObject);
         }
     }
 
@@ -90,5 +97,12 @@ public class greendman : MonoBehaviour{
         if (collision.gameObject.tag == "Player" && modo != Modo.dead){
             anim.SetBool("attack", true);
         }
+    }
+
+    private void morir(){
+        anim.SetBool("attack", false);
+        anim.SetBool("dead", true);
+        rb.constraints = RigidbodyConstraints2D.None;
+        modo = Modo.dead;
     }
 }
