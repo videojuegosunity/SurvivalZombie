@@ -45,6 +45,7 @@ public class Demo : MonoBehaviour {
     private void Awake(){
     	obj_trans = this.transform;
         modo = Modo.normal;
+        cantidad.Add(0);
     }
 
 	void Start () {
@@ -93,12 +94,14 @@ public class Demo : MonoBehaviour {
 			rb.AddForce (new Vector2 (0,jumpForce));
 		}
 
-		if(Input.GetKeyUp(KeyCode.V) && cantidad[0] > 0){
-            var position = rb.position;
-            GameObject obj = (GameObject) Instantiate(bomba, new Vector3(position.x + 2.5f, position.y, -5), Quaternion.identity);
-            obj.GetComponent<Rigidbody2D>().velocity = new Vector3(3, 0, 0);
-            cantidad[0] --;
-            cantidadText.text = cantidad[0].ToString();
+		if(Input.GetKeyUp(KeyCode.V) && cantidad.Count > 0){
+			if(cantidad[0] > 0){
+				var position = rb.position;
+	            GameObject obj = (GameObject) Instantiate(bomba, new Vector3(position.x + 2.5f, position.y, -5), Quaternion.identity);
+	            obj.GetComponent<Rigidbody2D>().velocity = new Vector3(3, 0, 0);
+	            obj.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+	            cantidad[0]--;
+			}   
         }
 	}
 
@@ -109,12 +112,16 @@ public class Demo : MonoBehaviour {
 		transform.localScale = theScale;
 	}
 
-    void SetCountText (){
+    void SetCountText(){
         puntajeText.text = puntaje.ToString();
         vidaText.text = vidas.ToString();
+        if(cantidad.Count > 0){
+			cantidadText.text = cantidad[0].ToString();
+        }
         if (puntaje >= 20){
             infoText.text = "Ganaste!";
         }
+
     }
 
     void OnCollisionEnter2D(Collision2D col){       
@@ -144,19 +151,21 @@ public class Demo : MonoBehaviour {
                     } 
                     break;
                 case Modo.ataque:
-                    infoText.text = "mataste un zombie!!!!!";
+                	zombieMuerto();
                     greendman scriptToAccess = col.gameObject.GetComponent<greendman>();
-                    scriptToAccess.CheckDestroy(true);
-                    puntaje += 2; 
+                    scriptToAccess.CheckDestroy(true); 
                     break;
             }  
         }
         if(col.gameObject.tag == "bomba" && !dead){
-        	//herramienta.sprite = (Sprite)Resources.Load <Sprite>("Free Game Items/300dpi/bomb");
         	herramientas.Add(col.gameObject);
-        	cantidad.Add(5);
-        	cantidadText.text = "5";
+        	cantidad[0] = 5;
         	Destroy(col.gameObject);
         }
+    }
+
+    public void zombieMuerto(){
+    	infoText.text = "mataste un zombie!!!!!";
+    	puntaje += 2;
     }
 }
