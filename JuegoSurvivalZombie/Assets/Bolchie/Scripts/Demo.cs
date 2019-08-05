@@ -118,19 +118,19 @@ public class Demo : MonoBehaviour {
         if(cantidad.Count > 0){
 			cantidadText.text = cantidad[0].ToString();
         }
-        if (puntaje >= 20){
+        if (puntaje >= 30){
             infoText.text = "Ganaste!";
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D col){
         collision(col);
-
+		// infoText.text = "";
     }
 
 	private void OnCollisionStay2D(Collision2D col){
 		collision(col);
+		// infoText.text = "";
     }
 
     public bool ataque(){
@@ -170,11 +170,11 @@ public class Demo : MonoBehaviour {
 
     public void zombieGolpeado(bool isKilled){
     	if(isKilled == false){
-			infoText.text = "Golpe!!";
+			// infoText.text = "Golpe!!";
     		// puntaje += 1;
 		}
 		else{
-			infoText.text = "Aniquilado!!";
+			// infoText.text = "Aniquilado!!";
     		puntaje += 3;
 		}
     }

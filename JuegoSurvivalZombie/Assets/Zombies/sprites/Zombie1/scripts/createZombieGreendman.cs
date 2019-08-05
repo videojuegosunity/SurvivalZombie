@@ -17,11 +17,13 @@ public class createZombieGreendman : MonoBehaviour{
     // Update is called once per frame
     void Update(){
         count++;
-        if( count == 120 ){
-            Vector3 position = new Vector3(15.0f + zombieI*5 ,-4f, prefab_zombie_greendman.transform.position.z);
-            Instantiate(prefab_zombie_greendman, position, Quaternion.identity);
-            count = 0;
-            zombieI++;
+        if( zombieI < 10 ){
+            if( count == 120 ){
+                Vector3 position = new Vector3(15.0f + zombieI*5 ,-4f, prefab_zombie_greendman.transform.position.z);
+                Instantiate(prefab_zombie_greendman, position, Quaternion.identity);
+                count = 0;
+                zombieI++;
+            }
         }
     }
 }
