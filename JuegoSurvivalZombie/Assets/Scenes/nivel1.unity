@@ -805,6 +805,11 @@ MonoBehaviour:
   anim: {fileID: 0}
   particulas: {fileID: 0}
   modo: 0
+  spriteBlinkingTimer: 0
+  spriteBlinkingMiniDuration: 0.1
+  spriteBlinkingTotalTimer: 0
+  spriteBlinkingTotalDuration: 1
+  startBlinking: 0
 --- !u!50 &305910233
 Rigidbody2D:
   serializedVersion: 4
@@ -1949,6 +1954,11 @@ MonoBehaviour:
   anim: {fileID: 0}
   particulas: {fileID: 0}
   modo: 0
+  spriteBlinkingTimer: 0
+  spriteBlinkingMiniDuration: 0.1
+  spriteBlinkingTotalTimer: 0
+  spriteBlinkingTotalDuration: 1
+  startBlinking: 0
 --- !u!114 &1107427749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1964,6 +1974,11 @@ MonoBehaviour:
   anim: {fileID: 0}
   particulas: {fileID: 0}
   modo: 0
+  spriteBlinkingTimer: 0
+  spriteBlinkingMiniDuration: 0.1
+  spriteBlinkingTotalTimer: 0
+  spriteBlinkingTotalDuration: 1
+  startBlinking: 0
 --- !u!50 &1107427750
 Rigidbody2D:
   serializedVersion: 4
@@ -2456,7 +2471,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 202.4, y: 1}
+  m_AnchoredPosition: {x: 249.8, y: 1}
   m_SizeDelta: {x: 98.95001, y: 52.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1430644805
