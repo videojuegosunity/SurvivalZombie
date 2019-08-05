@@ -17,9 +17,17 @@ public class greendman : MonoBehaviour{
     float limiteIzq;
     float direccion = -1;
     bool destroy = false;
+    int zombieLife = 12;
     float countDead = 60;
-    
-    
+
+
+    public float spriteBlinkingTimer = 0.0f;
+    public float spriteBlinkingMiniDuration = 0.1f;
+    public float spriteBlinkingTotalTimer = 0.0f;
+    public float spriteBlinkingTotalDuration = 1.0f;
+    public bool startBlinking = false;
+
+
     private void Awake(){
         obj_trasform = this.transform;
         gameObject.transform.localScale = new Vector3(1.0F, 1.0F, 1f);
@@ -36,7 +44,7 @@ public class greendman : MonoBehaviour{
     // Update is called once per frame
     void Update(){
         if(modo != Modo.dead){
-            CheckDestroy(destroy);
+            CheckDestroy();
             transform.localScale = new Vector3(1 * direccion,1,1);
             rb.velocity = new Vector2(speed*direccion, 0.0f);
             if(transform.position.x < limiteIzq && !choque){
@@ -46,28 +54,47 @@ public class greendman : MonoBehaviour{
                 direccion = -1;
             }
         }else{
+
             countDead--;
             if(countDead == 0){
                 Destroy(gameObject);
             }
         }
+        if (startBlinking == true){
+            SpriteBlinkingEffect();
+        }
     }
 
-    public void CheckDestroy(bool destroy){
-		if (destroy == true){
-           //Destroy(gameObject);
-            //anim.SetBool ("dead", true);
-        }
+    public void CheckDestroy(){
         var position = transform.position;
         if(position.y < -15f){
              Destroy(gameObject);
-        } 
+        }
+    }
+    public bool getKilled(){
+        if(zombieLife == 1){
+            morir();
+            this.zombieLife = 0;
+            return true;
+        }else if(zombieLife>1){
+            this.zombieLife = this.zombieLife - 1;
+        }
+        return false;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.tag == "Player" && modo != Modo.dead){
             if (collision.gameObject.GetComponent<Demo>().ataque()){
-                morir();  
+                anim.SetBool("attack", false);
+                if (zombieLife>1){
+                    startBlinking = true;
+                }
+                        // --zombieLife;
+                    // }else
+                    // {
+                    //     morir();
+                    // }
             }else{
                 anim.SetBool("attack", true);
             }
@@ -104,5 +131,29 @@ public class greendman : MonoBehaviour{
         anim.SetBool("dead", true);
         rb.constraints = RigidbodyConstraints2D.None;
         modo = Modo.dead;
+    }
+
+    private void SpriteBlinkingEffect()
+    {
+        spriteBlinkingTotalTimer += Time.deltaTime;
+        if(spriteBlinkingTotalTimer >= spriteBlinkingTotalDuration)
+        {
+            startBlinking = false;
+            spriteBlinkingTotalTimer = 0.0f;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;   // according to
+                      //your sprite
+            return;
+        }
+
+        spriteBlinkingTimer += Time.deltaTime;
+        if(spriteBlinkingTimer >= spriteBlinkingMiniDuration)
+        {
+            spriteBlinkingTimer = 0.0f;
+            if (this.gameObject.GetComponent<SpriteRenderer>().enabled == true) {
+                this.gameObject.GetComponent<SpriteRenderer>().enabled = false;  //make changes
+            } else {
+                this.gameObject.GetComponent<SpriteRenderer>().enabled = true;   //make changes
+            }
+        }
     }
 }
