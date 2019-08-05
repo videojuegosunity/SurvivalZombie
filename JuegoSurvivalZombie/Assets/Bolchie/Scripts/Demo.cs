@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Demo : MonoBehaviour {
     // GUI
@@ -19,7 +20,8 @@ public class Demo : MonoBehaviour {
     public int energiaTotal = 12000;
     public int energiaActual = 12000;
     public int puntaje = 0;
-    bool dead = false;
+    int deadCount = 120;
+    public bool dead = false;
     public enum Modo {ataque, normal};
     public Modo modo;
     List<GameObject> herramientas = new List<GameObject>();
@@ -58,7 +60,10 @@ public class Demo : MonoBehaviour {
         SetCountText();
         float valfa = 0.15f * (3 - vidas);
         mascaraDano.color =  new Color(255, 0, 0, valfa);
-		HandleInput ();
+		HandleInput();
+        if(dead && deadCount-- < 0){
+            SceneManager.LoadScene("perdiste");
+        }
 	}
 
 	void FixedUpdate (){
@@ -141,7 +146,7 @@ public class Demo : MonoBehaviour {
     	if(col.gameObject.tag == "zombie" && !dead){
             switch (modo){
                 case Modo.normal:
-                    energiaActual = energiaActual - 1;
+                    energiaActual = energiaActual - 20;
                     if(energiaActual <= 0){
                     	infoText.text = "Perdiste una vida!!!!!";
                     	vidas--;
