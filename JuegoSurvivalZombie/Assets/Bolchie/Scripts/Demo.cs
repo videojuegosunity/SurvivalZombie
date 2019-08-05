@@ -16,8 +16,8 @@ public class Demo : MonoBehaviour {
 
     // informacion de jugador
     public int vidas = 3;
-    public int energiaTotal = 100;
-    public int energiaActual = 100;
+    public int energiaTotal = 12000;
+    public int energiaActual = 12000;
     public int puntaje = 0;
     bool dead = false;
     public enum Modo {ataque, normal};
@@ -29,7 +29,7 @@ public class Demo : MonoBehaviour {
 	private float speed = 5f;
 	public GameObject bomba;
 	private bool facingRight = true;
-	
+
 	bool grounded = false;
 	public Transform groundCheck;
 	float groundRadius = 0.2f;
@@ -101,7 +101,7 @@ public class Demo : MonoBehaviour {
 	            obj.GetComponent<Rigidbody2D>().velocity = new Vector3(3, 0, 0);
 	            obj.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
 	            cantidad[0]--;
-			}   
+			}
         }
 	}
 
@@ -124,19 +124,24 @@ public class Demo : MonoBehaviour {
 
     }
 
-    void OnCollisionEnter2D(Collision2D col){       
+    void OnCollisionEnter2D(Collision2D col){
         collision(col);
+
+    }
+
+	private void OnCollisionStay2D(Collision2D col){
+		collision(col);
     }
 
     public bool ataque(){
-    	return Modo.ataque == modo; 
+    	return Modo.ataque == modo;
     }
 
     private void collision(Collision2D col){
     	if(col.gameObject.tag == "zombie" && !dead){
             switch (modo){
                 case Modo.normal:
-                    energiaActual = energiaActual - 5;
+                    energiaActual = energiaActual - 1;
                     if(energiaActual <= 0){
                     	infoText.text = "Perdiste una vida!!!!!";
                     	vidas--;
@@ -148,14 +153,13 @@ public class Demo : MonoBehaviour {
 				        anim.SetFloat ("Speed", 0);
 				        dead = true;
                         infoText.text = "Perdiste!!!!!";
-                    } 
+                    }
                     break;
                 case Modo.ataque:
-                	zombieMuerto();
-                    greendman scriptToAccess = col.gameObject.GetComponent<greendman>();
-                    scriptToAccess.CheckDestroy(true); 
+                    greendman zombieAttacked = col.gameObject.GetComponent<greendman>();
+                    zombieGolpeado(zombieAttacked.getKilled());
                     break;
-            }  
+            }
         }
         if(col.gameObject.tag == "bomba" && !dead){
         	herramientas.Add(col.gameObject);
@@ -164,8 +168,14 @@ public class Demo : MonoBehaviour {
         }
     }
 
-    public void zombieMuerto(){
-    	infoText.text = "mataste un zombie!!!!!";
-    	puntaje += 2;
+    public void zombieGolpeado(bool isKilled){
+    	if(isKilled == false){
+			infoText.text = "Golpe!!";
+    		// puntaje += 1;
+		}
+		else{
+			infoText.text = "Aniquilado!!";
+    		puntaje += 3;
+		}
     }
 }
