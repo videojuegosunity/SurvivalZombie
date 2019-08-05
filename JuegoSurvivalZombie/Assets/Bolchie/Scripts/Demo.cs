@@ -168,7 +168,7 @@ public class Demo : MonoBehaviour {
         }
         if(col.gameObject.tag == "bomba" && !dead){
         	herramientas.Add(col.gameObject);
-        	cantidad[0] = 5;
+        	cantidad[0] += 5;
         	Destroy(col.gameObject);
         }
     }

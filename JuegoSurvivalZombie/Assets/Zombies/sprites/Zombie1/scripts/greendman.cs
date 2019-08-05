@@ -105,6 +105,8 @@ public class greendman : MonoBehaviour{
         }
         if (collision.gameObject.tag == "bomba" && modo != Modo.dead){
             var position = transform.position;
+            Demo player = GameObject.FindWithTag("Player").GetComponent(typeof(Demo)) as Demo;
+            player.puntaje += 5;
             Instantiate(particulas, new Vector3(position.x, position.y, -10), Quaternion.identity);
             morir();
             Destroy(collision.gameObject);
