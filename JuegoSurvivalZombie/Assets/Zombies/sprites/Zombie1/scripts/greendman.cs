@@ -17,7 +17,7 @@ public class greendman : MonoBehaviour{
     float limiteIzq;
     float direccion = -1;
     bool destroy = false;
-    int zombieLife = 12;
+    int zombieLife = 10;
     float countDead = 60;
 
 
@@ -157,5 +157,9 @@ public class greendman : MonoBehaviour{
                 this.gameObject.GetComponent<SpriteRenderer>().enabled = true;   //make changes
             }
         }
+    }
+
+    public int getZombieLife(){
+        return this.zombieLife;
     }
 }
