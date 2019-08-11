@@ -20,13 +20,11 @@ public class greendman : MonoBehaviour{
     int zombieLife = 10;
     float countDead = 60;
 
-
     public float spriteBlinkingTimer = 0.0f;
     public float spriteBlinkingMiniDuration = 0.1f;
     public float spriteBlinkingTotalTimer = 0.0f;
-    public float spriteBlinkingTotalDuration = 1.0f;
+    public float spriteBlinkingTotalDuration = 0.8f;
     public bool startBlinking = false;
-
 
     private void Awake(){
         obj_trasform = this.transform;
@@ -40,7 +38,8 @@ public class greendman : MonoBehaviour{
         var posicionInicial = gameObject.GetComponent<Transform>().position;
         limiteDer = posicionInicial.x + 3f;
         limiteIzq = posicionInicial.x - 3f;
-}
+    }
+
     // Update is called once per frame
     void Update(){
         if(modo != Modo.dead){
@@ -54,7 +53,9 @@ public class greendman : MonoBehaviour{
                 direccion = -1;
             }
         }else{
-
+            if(this.zombieLife > 0){
+                this.zombieLife = Mathf.FloorToInt(countDead *10 /60);
+            }
             countDead--;
             if(countDead == 0){
                 Destroy(gameObject);
@@ -71,6 +72,7 @@ public class greendman : MonoBehaviour{
              Destroy(gameObject);
         }
     }
+    
     public bool getKilled(){
         if(zombieLife == 1){
             morir();
@@ -80,7 +82,6 @@ public class greendman : MonoBehaviour{
             this.zombieLife = this.zombieLife - 1;
         }
         return false;
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
@@ -90,11 +91,6 @@ public class greendman : MonoBehaviour{
                 if (zombieLife>1){
                     startBlinking = true;
                 }
-                        // --zombieLife;
-                    // }else
-                    // {
-                    //     morir();
-                    // }
             }else{
                 anim.SetBool("attack", true);
             }
@@ -135,21 +131,17 @@ public class greendman : MonoBehaviour{
         modo = Modo.dead;
     }
 
-    private void SpriteBlinkingEffect()
-    {
+    private void SpriteBlinkingEffect(){
         spriteBlinkingTotalTimer += Time.deltaTime;
-        if(spriteBlinkingTotalTimer >= spriteBlinkingTotalDuration)
-        {
+        if(spriteBlinkingTotalTimer >= spriteBlinkingTotalDuration){
             startBlinking = false;
             spriteBlinkingTotalTimer = 0.0f;
-            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;   // according to
-                      //your sprite
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;  
             return;
         }
 
         spriteBlinkingTimer += Time.deltaTime;
-        if(spriteBlinkingTimer >= spriteBlinkingMiniDuration)
-        {
+        if(spriteBlinkingTimer >= spriteBlinkingMiniDuration){
             spriteBlinkingTimer = 0.0f;
             if (this.gameObject.GetComponent<SpriteRenderer>().enabled == true) {
                 this.gameObject.GetComponent<SpriteRenderer>().enabled = false;  //make changes
