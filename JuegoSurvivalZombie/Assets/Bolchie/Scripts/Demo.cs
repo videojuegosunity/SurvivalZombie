@@ -123,8 +123,9 @@ public class Demo : MonoBehaviour {
         if(cantidad.Count > 0){
 			cantidadText.text = cantidad[0].ToString();
         }
-        if (puntaje >= 30){
+        if (puntaje >= 35){
             infoText.text = "Ganaste!";
+            SceneManager.LoadScene("menu");
         }
     }
 
@@ -147,6 +148,7 @@ public class Demo : MonoBehaviour {
             switch (modo){
                 case Modo.normal:
                     energiaActual = energiaActual - 20;
+                    anim.SetBool ("Hurt", true);
                     if(energiaActual <= 0){
                     	infoText.text = "Perdiste una vida!!!!!";
                     	vidas--;
