@@ -85,12 +85,12 @@ public class Demo : MonoBehaviour {
 	}
 
 	private void HandleInput(){
-		if (Input.GetKeyDown (KeyCode.C) && !dead){
+		if (Input.GetKeyDown (KeyCode.X) && !dead){
             modo = Modo.ataque;
 			anim.SetBool ("Attack", true);
 			anim.SetFloat ("Speed", 0);
 		}
-		if (Input.GetKeyUp(KeyCode.C)){
+		if (Input.GetKeyUp(KeyCode.X)){
             modo = Modo.normal;
 			anim.SetBool ("Attack", false);
 		}
