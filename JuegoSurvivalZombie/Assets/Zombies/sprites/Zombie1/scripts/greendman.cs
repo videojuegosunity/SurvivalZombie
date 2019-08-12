@@ -91,6 +91,8 @@ public class greendman : MonoBehaviour{
                 if (zombieLife>1){
                     startBlinking = true;
                 }
+                var position = transform.position;
+                Instantiate(particulas, new Vector3(position.x, position.y, -10), Quaternion.identity);
             }else{
                 anim.SetBool("attack", true);
             }
