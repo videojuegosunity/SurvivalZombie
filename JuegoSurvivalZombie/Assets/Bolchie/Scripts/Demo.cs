@@ -123,7 +123,7 @@ public class Demo : MonoBehaviour {
         if(cantidad.Count > 0){
 			cantidadText.text = cantidad[0].ToString();
         }
-        if (puntaje >= 35){
+        if (puntaje >= 30){
             infoText.text = "Ganaste!";
             SceneManager.LoadScene("menu");
         }

@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &267096257
 Transform:
   m_ObjectHideFlags: 0
@@ -432,6 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab_zombie_greendman: {fileID: 969541854494430945, guid: 2453e51d0fd7d307a829fe895588e787,
     type: 3}
+  qty: 10
 --- !u!4 &294952676
 Transform:
   m_ObjectHideFlags: 0
@@ -593,6 +594,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 61027570589253092, guid: d58e58070863f4a4e9a88c181489ff86,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.43222845
+      objectReference: {fileID: 0}
+    - target: {fileID: 61027570589253092, guid: d58e58070863f4a4e9a88c181489ff86,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 6.0944576
       objectReference: {fileID: 0}
     - target: {fileID: 114393563242933454, guid: d58e58070863f4a4e9a88c181489ff86,
         type: 3}

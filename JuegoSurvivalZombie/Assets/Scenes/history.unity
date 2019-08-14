@@ -223,7 +223,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 1
+  m_UseSpriteMesh: 0
 --- !u!222 &118281344
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118281341}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!224 &118281345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -496,7 +496,6 @@ GameObject:
   - component: {fileID: 263303469}
   - component: {fileID: 263303468}
   - component: {fileID: 263303470}
-  - component: {fileID: 263303471}
   m_Layer: 0
   m_Name: dialogue
   m_TagString: Untagged
@@ -521,15 +520,9 @@ MonoBehaviour:
     qu\xEDmicos que comenzaron a destruir toda clase de vida animal y vegetal de la
     Tierra. Los seres humanos sobrevivieron. A pesar de esto, hubo un da\xF1o colateral
     y fue que estos qu\xEDmicos al contacto con la tierra alteraron los suelos trayendo
-    consigo una catastrofe... \"El Apocalipsis Zombie\". Los seres humanos tienen
-    que adaptarse y sobrevivir a las constantes oleadas de zombies. Evitar ser mordidos
-    es su objetivo y lograr derribarlos ser\xE1 un gran obst\xE1culo."
-  blink_button: 0
-  duration_blink_button: 15
-  button_start: {fileID: 118281342}
-  rocochet: []
-  audio1: {fileID: 0}
-  audio2: {fileID: 0}
+    consigo la catastrofe m\xE0s del mundo \"El Apocalipsis Zombie\". Los seres humanos
+    tienen que adaptarse y sobrevivir a las constantes oleadas de zombies. Evitar
+    ser mordidos es su objetivo y lograr derribarlos ser\xE1 un gran obst\xE1culo."
 --- !u!4 &263303469
 Transform:
   m_ObjectHideFlags: 0
@@ -551,106 +544,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263303467}
-  m_Enabled: 0
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 42970dc1578414d41b116422c7606dbf, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &263303471
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263303467}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8c8b3f05080d8ce4aadcf9d66f1483b3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 42970dc1578414d41b116422c7606dbf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

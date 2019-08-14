@@ -7,6 +7,7 @@ public class createZombieGreendman : MonoBehaviour{
 
     int count = 0;
     int zombieI = 0;
+    public int qty;
 
     // Start is called before the first frame update
     void Start()
@@ -17,9 +18,9 @@ public class createZombieGreendman : MonoBehaviour{
     // Update is called once per frame
     void Update(){
         count++;
-        if( zombieI < 3 ){
+        if( zombieI < qty ){
             if( count == 240 ){
-                Vector3 position = new Vector3(45.0f + zombieI*5 ,-4f, prefab_zombie_greendman.transform.position.z);
+                Vector3 position = new Vector3(30.0f + zombieI*5 ,-4f, prefab_zombie_greendman.transform.position.z);
                 Instantiate(prefab_zombie_greendman, position, Quaternion.identity);
                 count = 0;
                 zombieI++;
