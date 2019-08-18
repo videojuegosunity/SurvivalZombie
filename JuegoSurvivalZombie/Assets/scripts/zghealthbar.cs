@@ -8,6 +8,7 @@ public class zghealthbar : MonoBehaviour
 	public greendman zombie;
 	Vector3 localScale;
 	int zombieLife;
+    public float factor;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class zghealthbar : MonoBehaviour
     void Update()
     {
         zombieLife = zombie.getZombieLife();
-        localScale.x = zombieLife/50f;
+        localScale.x = zombieLife/factor;
         transform.localScale = localScale;
     }
 }
