@@ -8,10 +8,10 @@ public class createZombieGreendman : MonoBehaviour{
     int count = 0;
     int zombieI = 0;
     public int qty;
+    public int life;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
 
     }
 
@@ -19,9 +19,11 @@ public class createZombieGreendman : MonoBehaviour{
     void Update(){
         count++;
         if( zombieI < qty ){
-            if( count == 240 ){
+            if( count == 200 ){
                 Vector3 position = new Vector3(30.0f + zombieI*5 ,-4f, prefab_zombie_greendman.transform.position.z);
-                Instantiate(prefab_zombie_greendman, position, Quaternion.identity);
+                GameObject obj = (GameObject) Instantiate(prefab_zombie_greendman, position, Quaternion.identity);
+                greendman zombie = obj.GetComponent<greendman>();
+                zombie.zombieLife = life;
                 count = 0;
                 zombieI++;
             }

@@ -225,7 +225,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
+  m_UseAutoMass: 0
   m_Mass: 7.890149
   m_LinearDrag: 0
   m_AngularDrag: 0
@@ -267,6 +267,8 @@ MonoBehaviour:
   particulas: {fileID: 6304398248765796183, guid: 91a1728bba7121e36b3992e608609c7b,
     type: 3}
   modo: 1
+  mass: 1
+  zombieLife: 10
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
@@ -584,6 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombie: {fileID: 2238947637146201980}
+  factor: 50
 --- !u!1 &9066370108261264127
 GameObject:
   m_ObjectHideFlags: 0

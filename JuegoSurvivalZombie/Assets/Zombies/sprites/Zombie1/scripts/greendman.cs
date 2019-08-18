@@ -8,17 +8,19 @@ public class greendman : MonoBehaviour{
     Rigidbody2D rb;
     public Animator anim;
     public GameObject particulas;
+    Collider2D m_Collider;
 
     public enum Modo {dead, normal};
     public Modo modo;
     private float speed = 2.5f;
     bool choque = false;
     float limiteDer;
+    public float mass;
     float limiteIzq;
     float direccion = -1;
     bool destroy = false;
-    int zombieLife = 10;
-    float countDead = 60;
+    public int zombieLife = 10;
+    float countDead = 90;
 
     public float spriteBlinkingTimer = 0.0f;
     public float spriteBlinkingMiniDuration = 0.1f;
@@ -30,6 +32,7 @@ public class greendman : MonoBehaviour{
         obj_trasform = this.transform;
         gameObject.transform.localScale = new Vector3(1.0F, 1.0F, 1f);
         anim = GetComponent<Animator> ();
+        m_Collider = GetComponent<Collider2D>();
     }
 
     void Start(){
@@ -53,6 +56,12 @@ public class greendman : MonoBehaviour{
                 direccion = -1;
             }
         }else{
+            rb.velocity = new Vector2(0f, -2f);
+            var position = rb.position;
+             rb.mass = mass;
+            //position.y += -0.04f;
+            position.x += 0.01f;
+            rb.position = position;
             if(this.zombieLife > 0){
                 this.zombieLife = Mathf.FloorToInt(countDead *10 /60);
             }
@@ -99,7 +108,7 @@ public class greendman : MonoBehaviour{
         }
         if (collision.gameObject.tag == "zombie" && modo != Modo.dead){
             choque = true;
-            direccion = direccion * -1 ;
+            direccion = direccion * -1;
         }
         if (collision.gameObject.tag == "bomba" && modo != Modo.dead){
             var position = transform.position;
@@ -131,6 +140,7 @@ public class greendman : MonoBehaviour{
         anim.SetBool("dead", true);
         rb.constraints = RigidbodyConstraints2D.None;
         modo = Modo.dead;
+        m_Collider.enabled = false;
     }
 
     private void SpriteBlinkingEffect(){
