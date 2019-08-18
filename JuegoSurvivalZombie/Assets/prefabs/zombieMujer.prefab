@@ -280,6 +280,7 @@ MonoBehaviour:
   modo: 1
   mass: 10
   zombieLife: 10
+  extraPoder: 30
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
