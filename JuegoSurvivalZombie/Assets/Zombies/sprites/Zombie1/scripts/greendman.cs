@@ -21,6 +21,7 @@ public class greendman : MonoBehaviour{
     bool destroy = false;
     public int zombieLife = 10;
     float countDead = 90;
+    public int extraPoder;
 
     public float spriteBlinkingTimer = 0.0f;
     public float spriteBlinkingMiniDuration = 0.1f;
@@ -103,6 +104,7 @@ public class greendman : MonoBehaviour{
                 var position = transform.position;
                 Instantiate(particulas, new Vector3(position.x, position.y, -10), Quaternion.identity);
             }else{
+                collision.gameObject.GetComponent<Demo>().energiaActual-=extraPoder;
                 anim.SetBool("attack", true);
             }
         }
