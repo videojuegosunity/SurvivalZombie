@@ -9,6 +9,7 @@ public class Demo : MonoBehaviour {
     public Text puntajeText;
     public Text vidaText;
     public Text infoText;
+    public Text zombieMuertosText;
    	public Text cantidadText;
     public Image mascaraDano;
     public Image barraEnergia;
@@ -20,7 +21,10 @@ public class Demo : MonoBehaviour {
     public int energiaTotal = 12000;
     public int energiaActual = 12000;
     public int puntaje = 0;
+    public int zombieMuertos = 0;
+    public int totalZombies;
     int deadCount = 120;
+    public string nextLevel = "";
     public bool dead = false;
     public enum Modo {ataque, normal};
     public Modo modo;
@@ -57,7 +61,6 @@ public class Demo : MonoBehaviour {
 	}
 
 	void Update(){
-        SetCountText();
         float valfa = 0.15f * (3 - vidas);
         mascaraDano.color =  new Color(255, 0, 0, valfa);
 		HandleInput();
@@ -82,10 +85,11 @@ public class Demo : MonoBehaviour {
 			Flip (horizontal);
 		}
 		barraEnergia.fillAmount = (float)energiaActual / energiaTotal;
+        SetCountText();
 	}
 
 	private void HandleInput(){
-		if (Input.GetKeyDown (KeyCode.X) && !dead){
+		if (Input.GetKeyDown(KeyCode.X) && !dead){
             modo = Modo.ataque;
 			anim.SetBool ("Attack", true);
 			anim.SetFloat ("Speed", 0);
@@ -123,10 +127,12 @@ public class Demo : MonoBehaviour {
         if(cantidad.Count > 0){
 			cantidadText.text = cantidad[0].ToString();
         }
-        if (puntaje >= 30){
+        if (puntaje >= 30 | totalZombies == zombieMuertos){
             infoText.text = "Ganaste!";
-            SceneManager.LoadScene("menu");
+            SceneManager.LoadScene(nextLevel);
         }
+        zombieMuertosText.text = zombieMuertos.ToString();
+        infoText.text = "";
     }
 
     void OnCollisionEnter2D(Collision2D col){
@@ -177,12 +183,11 @@ public class Demo : MonoBehaviour {
 
     public void zombieGolpeado(bool isKilled){
     	if(isKilled == false){
-			// infoText.text = "Golpe!!";
-    		// puntaje += 1;
-		}
-		else{
-			// infoText.text = "Aniquilado!!";
+			infoText.text = "Lo Golpeaste!!";
+		}else{
+			infoText.text = "Aniquilado!!";
     		puntaje += 3;
+            zombieMuertos++;
 		}
     }
 }
