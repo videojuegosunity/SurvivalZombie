@@ -690,7 +690,7 @@ PrefabInstance:
     - target: {fileID: 50705500024270074, guid: d58e58070863f4a4e9a88c181489ff86,
         type: 3}
       propertyPath: m_Mass
-      value: 1.4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 58962551605444100, guid: d58e58070863f4a4e9a88c181489ff86,
         type: 3}
@@ -778,7 +778,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   particulas: {fileID: 0}
   modo: 0
+  mass: 0
   zombieLife: 10
+  extraPoder: 0
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
@@ -1926,7 +1928,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   particulas: {fileID: 0}
   modo: 0
+  mass: 0
   zombieLife: 10
+  extraPoder: 0
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
@@ -1947,7 +1951,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   particulas: {fileID: 0}
   modo: 0
+  mass: 0
   zombieLife: 10
+  extraPoder: 0
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0

@@ -291,6 +291,7 @@ MonoBehaviour:
   modo: 1
   mass: 0
   zombieLife: 50
+  extraPoder: 0
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
@@ -549,6 +550,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mass
       value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 58962551605444100, guid: d58e58070863f4a4e9a88c181489ff86,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 1.8618908
+      objectReference: {fileID: 0}
+    - target: {fileID: 58962551605444100, guid: d58e58070863f4a4e9a88c181489ff86,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.70631033
+      objectReference: {fileID: 0}
+    - target: {fileID: 58962551605444100, guid: d58e58070863f4a4e9a88c181489ff86,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.6090299
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d58e58070863f4a4e9a88c181489ff86, type: 3}
@@ -1599,11 +1615,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.42727503
       objectReference: {fileID: 0}
-    - target: {fileID: 5390883772302102237, guid: 26eed82dad802d3e5b861326b3e38076,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2984307812172172722, guid: 26eed82dad802d3e5b861326b3e38076,
         type: 3}
       propertyPath: m_Sprite
@@ -1624,6 +1635,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5390883772302102237, guid: 26eed82dad802d3e5b861326b3e38076,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26eed82dad802d3e5b861326b3e38076, type: 3}
@@ -1993,11 +2009,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.34965003
       objectReference: {fileID: 0}
-    - target: {fileID: 5390883772302102237, guid: 26eed82dad802d3e5b861326b3e38076,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2984307812172172722, guid: 26eed82dad802d3e5b861326b3e38076,
         type: 3}
       propertyPath: m_Sprite
@@ -2018,6 +2029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5390883772302102237, guid: 26eed82dad802d3e5b861326b3e38076,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26eed82dad802d3e5b861326b3e38076, type: 3}
@@ -2209,6 +2225,7 @@ MonoBehaviour:
   modo: 0
   mass: 0
   zombieLife: 10
+  extraPoder: 0
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
@@ -2231,6 +2248,7 @@ MonoBehaviour:
   modo: 0
   mass: 0
   zombieLife: 10
+  extraPoder: 0
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
