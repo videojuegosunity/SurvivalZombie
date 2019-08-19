@@ -127,7 +127,7 @@ public class Demo : MonoBehaviour {
         if(cantidad.Count > 0){
 			cantidadText.text = cantidad[0].ToString();
         }
-        if (puntaje >= 30 | totalZombies == zombieMuertos){
+        if (puntaje >= 100 | totalZombies == zombieMuertos){
             infoText.text = "Ganaste!";
             SceneManager.LoadScene(nextLevel);
         }
