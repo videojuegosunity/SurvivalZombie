@@ -475,7 +475,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 942117643}
+      - m_Target: {fileID: 935944311}
         m_MethodName: CambiarEscena
         m_Mode: 5
         m_Arguments:
@@ -683,7 +683,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794507766}
   m_CullTransparentMesh: 1
---- !u!1 &942117642
+--- !u!1 &935944310
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -691,8 +691,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 942117644}
-  - component: {fileID: 942117643}
+  - component: {fileID: 935944312}
+  - component: {fileID: 935944311}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -700,27 +700,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &942117643
+--- !u!114 &935944311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942117642}
+  m_GameObject: {fileID: 935944310}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 748e78159f5392b409cd5c7effb75746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &942117644
+--- !u!4 &935944312
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942117642}
+  m_GameObject: {fileID: 935944310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 127.99996, y: 340, z: 0}
+  m_LocalPosition: {x: 512, y: 384, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
