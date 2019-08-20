@@ -54,10 +54,17 @@ public class Demo : MonoBehaviour {
         cantidad.Add(0);
     }
 
+    void OnDisable(){
+        PlayerPrefs.SetInt("score", puntaje);   
+    }
+
 	void Start () {
 		GetComponent<Rigidbody2D>().freezeRotation = true;
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
+        if(nextLevel == "verpuntaje" || nextLevel == "ganastes"){
+            puntaje  =  PlayerPrefs.GetInt("score");
+        }
 	}
 
 	void Update(){
@@ -65,6 +72,7 @@ public class Demo : MonoBehaviour {
         mascaraDano.color =  new Color(255, 0, 0, valfa);
 		HandleInput();
         if(dead && deadCount-- < 0){
+            PlayerPrefs.SetInt("score", puntaje);
             SceneManager.LoadScene("perdiste");
         }
 	}
@@ -129,6 +137,7 @@ public class Demo : MonoBehaviour {
         }
         if (puntaje >= 100 | totalZombies == zombieMuertos){
             infoText.text = "Ganaste!";
+            PlayerPrefs.SetInt("score", puntaje);
             SceneManager.LoadScene(nextLevel);
         }
         zombieMuertosText.text = zombieMuertos.ToString();
