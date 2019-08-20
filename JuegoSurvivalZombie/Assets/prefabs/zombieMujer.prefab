@@ -188,6 +188,7 @@ MonoBehaviour:
   mass: 10
   zombieLife: 10
   extraPoder: 30
+  difficult: 2
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
@@ -213,7 +214,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.73461914
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

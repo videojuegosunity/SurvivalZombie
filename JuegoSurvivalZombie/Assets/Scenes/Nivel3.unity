@@ -292,6 +292,7 @@ MonoBehaviour:
   mass: 0
   zombieLife: 50
   extraPoder: 0
+  difficult: 0
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
@@ -2413,6 +2414,7 @@ MonoBehaviour:
   mass: 0
   zombieLife: 10
   extraPoder: 0
+  difficult: 0
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0
@@ -2436,6 +2438,7 @@ MonoBehaviour:
   mass: 0
   zombieLife: 10
   extraPoder: 0
+  difficult: 0
   spriteBlinkingTimer: 0
   spriteBlinkingMiniDuration: 0.1
   spriteBlinkingTotalTimer: 0

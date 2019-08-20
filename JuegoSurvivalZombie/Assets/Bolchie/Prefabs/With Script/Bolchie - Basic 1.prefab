@@ -182,12 +182,23 @@ MonoBehaviour:
   puntajeText: {fileID: 0}
   vidaText: {fileID: 0}
   infoText: {fileID: 0}
+  zombieMuertosText: {fileID: 0}
+  cantidadText: {fileID: 0}
   mascaraDano: {fileID: 0}
+  barraEnergia: {fileID: 0}
+  herramienta: {fileID: 0}
   anim: {fileID: 0}
   vidas: 3
+  energiaTotal: 12000
+  energiaActual: 12000
   puntaje: 0
+  zombieMuertos: 0
+  totalZombies: 0
+  nextLevel: verpuntaje
+  dead: 0
   modo: 0
-  herramientas: []
+  index_herramientas: 0
+  bomba: {fileID: 0}
   groundCheck: {fileID: 4474148740906240}
   whatIsGround:
     serializedVersion: 2

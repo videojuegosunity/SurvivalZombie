@@ -22,6 +22,7 @@ public class greendman : MonoBehaviour{
     public int zombieLife = 10;
     float countDead = 90;
     public int extraPoder;
+    public int difficult;
 
     public float spriteBlinkingTimer = 0.0f;
     public float spriteBlinkingMiniDuration = 0.1f;
@@ -59,8 +60,10 @@ public class greendman : MonoBehaviour{
         }else{
             rb.velocity = new Vector2(0f, -2f);
             var position = rb.position;
-             rb.mass = mass;
-            //position.y += -0.04f;
+            rb.mass = mass;
+            if(difficult >=2){
+                position.y += -0.1f;
+            }
             position.x += 0.01f;
             rb.position = position;
             if(this.zombieLife > 0){
@@ -115,7 +118,8 @@ public class greendman : MonoBehaviour{
         if (collision.gameObject.tag == "bomba" && modo != Modo.dead){
             var position = transform.position;
             Demo player = GameObject.FindWithTag("Player").GetComponent(typeof(Demo)) as Demo;
-            player.puntaje += 5;
+            player.puntaje += 2;
+            player.zombieGolpeado(true);
             Instantiate(particulas, new Vector3(position.x, position.y, -10), Quaternion.identity);
             morir();
             Destroy(collision.gameObject);
