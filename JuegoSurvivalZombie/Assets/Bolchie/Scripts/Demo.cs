@@ -47,7 +47,8 @@ public class Demo : MonoBehaviour {
 
 	public Rigidbody2D rb { get; set; }
 	public Transform obj_trans;
-
+    public bool Destroy_ = false;
+    public int countDestroy = 60;
     private void Awake(){
     	obj_trans = this.transform;
         modo = Modo.normal;
@@ -62,8 +63,10 @@ public class Demo : MonoBehaviour {
 		GetComponent<Rigidbody2D>().freezeRotation = true;
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
-        if(nextLevel == "verpuntaje" || nextLevel == "ganastes"){
+        if(nextLevel == "verpuntaje" | nextLevel == "ganastes"){
             puntaje  =  PlayerPrefs.GetInt("score");
+        }else{
+            puntaje = 0;
         }
 	}
 
@@ -74,6 +77,9 @@ public class Demo : MonoBehaviour {
         if(dead && deadCount-- < 0){
             PlayerPrefs.SetInt("score", puntaje);
             SceneManager.LoadScene("perdiste");
+        }
+        if(countDestroy -- > 0){
+            mascaraDano.color =  new Color(255, 0, 0, 0);
         }
 	}
 
@@ -113,7 +119,9 @@ public class Demo : MonoBehaviour {
 
 		if(Input.GetKeyUp(KeyCode.V) && cantidad.Count > 0){
 			if(cantidad[0] > 0){
+                mascaraDano.color =  new Color(255, 0, 0, 255);
 				var position = rb.position;
+                countDestroy=60;
 	            GameObject obj = (GameObject) Instantiate(bomba, new Vector3(position.x + 2.5f, position.y, -5), Quaternion.identity);
 	            obj.GetComponent<Rigidbody2D>().velocity = new Vector3(3, 0, 0);
 	            obj.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
@@ -135,7 +143,7 @@ public class Demo : MonoBehaviour {
         if(cantidad.Count > 0){
 			cantidadText.text = cantidad[0].ToString();
         }
-        if (puntaje >= 100 | totalZombies == zombieMuertos){
+        if (totalZombies == zombieMuertos){
             infoText.text = "Ganaste!";
             PlayerPrefs.SetInt("score", puntaje);
             SceneManager.LoadScene(nextLevel);

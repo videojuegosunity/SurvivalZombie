@@ -23,6 +23,8 @@ public class greendman : MonoBehaviour{
     float countDead = 90;
     public int extraPoder;
     public int difficult;
+    float countdestroy=60;
+    bool bomba = false;
 
     public float spriteBlinkingTimer = 0.0f;
     public float spriteBlinkingMiniDuration = 0.1f;
@@ -116,6 +118,7 @@ public class greendman : MonoBehaviour{
             direccion = direccion * -1;
         }
         if (collision.gameObject.tag == "bomba" && modo != Modo.dead){
+            collision.gameObject.active = true;
             var position = transform.position;
             Demo player = GameObject.FindWithTag("Player").GetComponent(typeof(Demo)) as Demo;
             player.puntaje += 2;
