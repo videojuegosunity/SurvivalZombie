@@ -3,6 +3,7 @@ SurvivalZombie
 
 Video game
 ----------
+Install Git LFS[link](https://git-lfs.github.com/)
 
 Capturas del juegos:
 --------------------
